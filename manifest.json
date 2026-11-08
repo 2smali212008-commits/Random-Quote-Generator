@@ -1,6 +1,6 @@
 {
-  "name": "Daily Inspiration",
-  "short_name": "Inspiration",
+  "name": "Random Quote Generator",
+  "short_name": "Random Quote Generator",
   "description": "A little inspiration for your day.",
   "start_url": "./index.html",
   "scope": "./",
