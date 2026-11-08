@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff5f7">
+  <meta name="description" content="A little inspiration for your day. Smile, dream and grow with Daily Inspiration.">
+  <title>Daily Inspiration — A Little Light for Your Day</title>
+  <style>
+    :root {
+      --ink: #423553;
+      --muted: #766b83;
+      --plum: #7454a0;
+      --rose: #ef9cb2;
+      --pink: #ffe3eb;
+      --lavender: #eee8ff;
+      --line: rgba(108, 79, 139, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 14% 8%, rgba(255, 222, 232, .8), transparent 32%),
+        radial-gradient(ellipse at 90% 92%, rgba(225, 218, 255, .85), transparent 36%),
+        linear-gradient(135deg, #fffaf5 0%, #fff4f7 48%, #f5f0ff 100%);
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1160px, calc(100% - 48px));
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .topbar {
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -.3px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #ffe0e9, #e9ddff);
+      box-shadow: 0 7px 18px rgba(116, 84, 160, .12);
+      font-size: 20px;
+    }
+
+    .top-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .top-note span {
+      color: #ec8fa9;
+      font-size: 17px;
+    }
+
+    main {
+      min-height: calc(100vh - 136px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 34px;
+      padding: 48px 0 60px;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 18px 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid rgba(116, 84, 160, .13);
+      border-radius: 999px;
+      color: var(--plum);
+      background: rgba(255, 255, 255, .65);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      box-shadow: 0 6px 18px rgba(84, 61, 112, .04);
+    }
+
+    .pill span {
+      font-size: 14px;
+    }
+
+    h1 {
+      max-width: 580px;
+      margin: 23px 0 10px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(49px, 6.2vw, 76px);
+      line-height: .99;
+      letter-spacing: -3.6px;
+      font-weight: 700;
+    }
+
+    h1 em {
+      color: var(--plum);
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin: 17px 0 12px;
+      color: #9a6985;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: .1px;
+    }
+
+    .description {
+      max-width: 470px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 29px;
+    }
+
+    .cta {
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 16px;
+      color: #fff;
+      background: linear-gradient(100deg, #e88fa9, #9676c8);
+      box-shadow: 0 12px 28px rgba(150, 105, 172, .25), inset 0 1px rgba(255, 255, 255, .36);
+      font-size: 14px;
+      font-weight: 800;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(150, 105, 172, .32), inset 0 1px rgba(255, 255, 255, .4);
+    }
+
+    .cta:focus-visible {
+      outline: 3px solid #8d6ab5;
+      outline-offset: 4px;
+    }
+
+    .cta svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .tiny-note {
+      color: #9e92a9;
+      font-size: 11px;
+    }
+
+    .tiny-note span {
+      color: #e995ae;
+      margin-right: 4px;
+    }
+
+    .art {
+      min-height: 490px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .art-halo {
+      position: absolute;
+      width: min(410px, 87vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 45% 42%,
+        rgba(255, 255, 255, .96) 0 26%,
+        rgba(255, 231, 239, .78) 27% 48%,
+        rgba(230, 220, 255, .62) 49% 65%,
+        transparent 66%
+      );
+    }
+
+    .art-ring {
+      position: absolute;
+      width: min(455px, 96vw);
+      aspect-ratio: 1;
+      border: 1px dashed rgba(140, 110, 172, .24);
+      border-radius: 50%;
+      animation: slow-spin 48s linear infinite;
+    }
+
+    .character-card {
+      width: min(385px, 86%);
+      position: relative;
+      z-index: 1;
+      padding: 15px 15px 18px;
+      border: 1px solid rgba(255, 255, 255, .8);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, .57);
+      box-shadow: 0 25px 70px rgba(91, 67, 117, .14);
+      backdrop-filter: blur(10px);
+      transform: rotate(1.5deg);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .character-frame {
+      overflow: hidden;
+      border-radius: 22px;
+      background: linear-gradient(150deg, #f4eaff, #ffeaf0 55%, #fff4dc);
+    }
+
+    .character-frame svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 5px 0;
+    }
+
+    .caption strong {
+      display: block;
+      color: #58466d;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+    }
+
+    .caption small {
+      display: block;
+      margin-top: 4px;
+      color: #9a8ba5;
+      font-size: 10px;
+    }
+
+    .caption-badge {
+      display: grid;
+      width: 39px;
+      height: 39px;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--pink);
+      font-size: 19px;
+    }
+
+    .float {
+      position: absolute;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .8);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .76);
+      box-shadow: 0 9px 25px rgba(99, 72, 130, .12);
+      animation: bob 4s ease-in-out infinite;
+    }
+
+    .f1 { width: 49px; height: 49px; top: 46px; left: 10%; font-size: 22px; }
+    .f2 { width: 43px; height: 43px; top: 94px; right: 4%; font-size: 19px; animation-delay: -1.2s; }
+    .f3 { width: 54px; height: 54px; bottom: 45px; left: 8%; font-size: 23px; animation-delay: -2.1s; }
+    .f4 { width: 40px; height: 40px; bottom: 87px; right: 5%; font-size: 17px; animation-delay: -.6s; }
+
+    .spark {
+      position: absolute;
+      color: #b699d9;
+      font-size: 18px;
+      animation: twinkle 2.4s ease-in-out infinite;
+    }
+
+    .s1 { top: 26px; right: 23%; }
+    .s2 { left: 4%; bottom: 155px; animation-delay: .8s; }
+    .s3 { right: 10%; top: 180px; animation-delay: 1.4s; }
+
+    footer {
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border-top: 1px solid var(--line);
+      color: #9c91a7;
+      font-size: 10px;
+    }
+
+    footer span:last-child {
+      color: #a37eaa;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(1.5deg); }
+      50% { transform: translateY(-9px) rotate(0deg); }
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-8px) rotate(5deg); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: .48; transform: scale(.85) rotate(0); }
+      50% { opacity: 1; transform: scale(1.15) rotate(18deg); }
+    }
+
+    @keyframes slow-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 800px) {
+      .page { width: min(620px, calc(100% - 38px)); }
+      main {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 45px 0 38px;
+      }
+      .hero { padding: 12px 0 0; text-align: center; }
+      h1, .description { margin-left: auto; margin-right: auto; }
+      h1 { font-size: clamp(52px, 10vw, 70px); }
+      .cta-row { justify-content: center; }
+      .art { min-height: 450px; }
+      .character-card { width: min(360px, 78%); }
+      .f1 { left: 8%; }
+      .f2 { right: 5%; }
+      .f3 { left: 6%; }
+      .f4 { right: 5%; }
+    }
+
+    @media (max-width: 480px) {
+      .page { width: calc(100% - 30px); }
+      .topbar { height: 70px; }
+      .top-note { font-size: 10px; }
+      h1 { margin-top: 20px; font-size: 51px; letter-spacing: -2.5px; }
+      .subtitle { font-size: 15px; }
+      .description { font-size: 14px; }
+      .cta { width: 100%; }
+      .tiny-note { width: 100%; text-align: center; }
+      .art { min-height: 385px; }
+      .character-card {
+        width: min(315px, 80%);
+        padding: 10px 10px 13px;
+        border-radius: 24px;
+      }
+      .character-frame { border-radius: 17px; }
+      .caption { padding-top: 10px; }
+      .caption strong { font-size: 14px; }
+      .f1 { width: 40px; height: 40px; left: 3%; top: 40px; font-size: 18px; }
+      .f2 { width: 36px; height: 36px; right: 1%; top: 76px; font-size: 16px; }
+      .f3 { width: 44px; height: 44px; left: 2%; bottom: 37px; font-size: 19px; }
+      .f4 { width: 35px; height: 35px; right: 1%; bottom: 67px; font-size: 15px; }
+      footer { padding: 13px 0; font-size: 9px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Daily Inspiration home">
+        <span class="brand-mark" aria-hidden="true">🌷</span>
+        <span>Daily Inspiration</span>
+      </a>
+      <div class="top-note"><span aria-hidden="true">♡</span> a little light for today</div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="main-title">
+        <div class="pill"><span aria-hidden="true">✦</span> Your daily reminder to shine</div>
+        <h1 id="main-title">Daily<br><em>Inspiration</em></h1>
+        <p class="subtitle">A Little Inspiration for Your Day</p>
+        <p class="description">
+          Every day is a new opportunity to smile, dream and grow.
+          Take a tiny pause, find a kind thought, and carry a little brightness with you.
+        </p>
+        <div class="cta-row">
+          <a class="cta" href="quotes.html">
+            Get Inspired
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="tiny-note"><span aria-hidden="true">✿</span> a fresh thought is just a click away</span>
+        </div>
+      </section>
+
+      <section class="art" aria-label="A cute anime-inspired friend welcoming you">
+        <div class="art-halo" aria-hidden="true"></div>
+        <div class="art-ring" aria-hidden="true"></div>
+        <span class="float f1" aria-hidden="true">🌸</span>
+        <span class="float f2" aria-hidden="true">☁️</span>
+        <span class="float f3" aria-hidden="true">💖</span>
+        <span class="float f4" aria-hidden="true">🌼</span>
+        <span class="spark s1" aria-hidden="true">✦</span>
+        <span class="spark s2" aria-hidden="true">✧</span>
+        <span class="spark s3" aria-hidden="true">✦</span>
+
+        <div class="character-card">
+          <div class="character-frame">
+            <svg viewBox="0 0 380 390" role="img" aria-labelledby="anime-title anime-desc" xmlns="http://www.w3.org/2000/svg">
+              <title id="anime-title">Mika, your cheerful inspiration buddy</title>
+              <desc id="anime-desc">A smiling anime-inspired girl with lavender hair, rosy cheeks and a pink outfit, surrounded by flowers and stars.</desc>
+              <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                  <stop stop-color="#eee6ff"/>
+                  <stop offset=".58" stop-color="#ffe6ee"/>
+                  <stop offset="1" stop-color="#fff1d9"/>
+                </linearGradient>
+                <linearGradient id="hair" x1=".15" y1="0" x2=".8" y2="1">
+                  <stop stop-color="#a68bd0"/>
+                  <stop offset="1" stop-color="#665184"/>
+                </linearGradient>
+                <linearGradient id="dress" x1="0" y1="0" x2="1" y2="1">
+                  <stop stop-color="#ffbed0"/>
+                  <stop offset="1" stop-color="#e889a8"/>
+                </linearGradient>
+              </defs>
+              <rect width="380" height="390" fill="url(#bg)"/>
+              <circle cx="190" cy="190" r="145" fill="#fff" opacity=".35"/>
+              <g fill="#fff" opacity=".9">
+                <path d="m66 87 4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/>
+                <path d="m312 115 3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+                <path d="m83 255 3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+              </g>
+              <g transform="translate(190 210)">
+                <path d="M-96-48c-10-72 26-121 94-121 70 0 108 54 96 131l-10 116c-2 24-20 42-42 42h-91c-25 0-43-18-45-43z" fill="url(#hair)"/>
+                <path d="M-24 42h48v49c0 17-48 17-48 0z" fill="#f6c5ac"/>
+                <path d="M-57 78c-47 8-77 37-91 102h296C134 115 102 86 56 78L0 111z" fill="url(#dress)"/>
+                <path d="M-34 78 0 111l34-33-9-13h-50z" fill="#fff2f5"/>
+                <path d="m-12 112 12 17 12-17-12-12z" fill="#9c6ab0"/>
+                <path d="M-89 158c36 14 142 14 178 0" fill="none" stroke="#ffdce5" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+                <ellipse cx="-74" cy="-42" rx="17" ry="24" fill="#f7c8b1"/>
+                <ellipse cx="74" cy="-42" rx="17" ry="24" fill="#f7c8b1"/>
+                <path d="M-77-69c0-56 30-87 77-87s77 31 77 87v48c0 51-34 86-77 86s-77-35-77-86z" fill="#ffd6c3"/>
+                <path d="M-80-69c-3-62 29-98 82-98 47 0 79 26 82 78-18-1-32-9-44-24-9 22-30 34-55 38-18 3-39 4-65 6z" fill="url(#hair)"/>
+                <path d="M-73-77c13-31 34-42 57-46-10 17-13 33-12 48-13-2-28-2-45-2z" fill="#b49bd9" opacity=".65"/>
+                <path d="M14-142c20 4 36 16 48 37-19-3-34-11-47-24z" fill="#b49bd9" opacity=".55"/>
+                <path d="M-74-105c33-17 106-18 148 0" fill="none" stroke="#ffd178" stroke-width="8" stroke-linecap="round"/>
+                <path d="M55-112c20-20 31-19 36-12-8 12-18 20-31 22 19 0 30 9 32 20-17 1-30-6-39-19z" fill="#f18da9"/>
+                <path d="M-51-50c11-17 29-18 41-2-9 18-30 21-41 2z" fill="#fff"/>
+                <path d="M10-52c12-16 31-14 41 2-11 19-32 16-41-2z" fill="#fff"/>
+                <ellipse cx="-31" cy="-43" rx="10" ry="14" fill="#634b78"/>
+                <ellipse cx="30" cy="-43" rx="10" ry="14" fill="#634b78"/>
+                <circle cx="-28" cy="-48" r="4" fill="#fff"/>
+                <circle cx="33" cy="-48" r="4" fill="#fff"/>
+                <path d="M-53-57q20-18 42-1M8-58q21-17 44 0" fill="none" stroke="#624b78" stroke-width="5" stroke-linecap="round"/>
+                <ellipse cx="-54" cy="-12" rx="16" ry="7" fill="#f398a9" opacity=".42"/>
+                <ellipse cx="54" cy="-12" rx="16" ry="7" fill="#f398a9" opacity=".42"/>
+                <path d="M-14 2q14 19 29 0" fill="none" stroke="#b85f78" stroke-width="4" stroke-linecap="round"/>
+                <path d="M0-14v7" stroke="#d59383" stroke-width="2" stroke-linecap="round"/>
+                <path d="M-121 157c-22-12-33-31-29-51 2-10 10-13 15-4l11 19c-3-15 0-27 7-28 9-1 10 18 11 28 7-9 15-10 18-4 4 8-9 30-19 41z" fill="#ffd6c3" stroke="#eaa998" stroke-width="2"/>
+                <path d="M121 157c22-12 33-31 29-51-2-10-10-13-15-4l-11 19c3-15 0-27-7-28-9-1-10 18-11 28-7-9-15-10-18-4-4 8 9 30 19 41z" fill="#ffd6c3" stroke="#eaa998" stroke-width="2"/>
+              </g>
+              <g transform="translate(69 319)">
+                <g fill="#fff">
+                  <ellipse cy="-10" rx="5" ry="8"/><ellipse cy="10" rx="5" ry="8"/>
+                  <ellipse cx="-10" rx="8" ry="5"/><ellipse cx="10" rx="8" ry="5"/>
+                </g>
+                <circle r="4" fill="#f2b94b"/>
+              </g>
+              <g transform="translate(316 278)">
+                <g fill="#f49ab2">
+                  <ellipse cy="-10" rx="5" ry="8"/><ellipse cy="10" rx="5" ry="8"/>
+                  <ellipse cx="-10" rx="8" ry="5"/><ellipse cx="10" rx="8" ry="5"/>
+                </g>
+                <circle r="4" fill="#f2b94b"/>
+              </g>
+            </svg>
+          </div>
+          <div class="caption">
+            <div>
+              <strong>Hi, lovely human!</strong>
+              <small>Your little inspiration buddy is here for you.</small>
+            </div>
+            <span class="caption-badge" aria-hidden="true">✨</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© Daily Inspiration</span>
+      <span>Made with a little sunshine ♡</span>
+    </footer>
+  </div>
+</body>
+</html>
